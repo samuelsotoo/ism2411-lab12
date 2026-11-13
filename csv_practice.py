@@ -91,3 +91,4 @@ timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 with open("data/run_log.txt", "a") as log:
      log.write(f"{timestamp} - Total revenue: ${total:.2f}\n")
+     
