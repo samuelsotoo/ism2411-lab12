@@ -1,4 +1,4 @@
-("--- Exercise 1-3 ---")
+("--- Exercise 1-4 ---")
 
 import csv
 
@@ -19,12 +19,12 @@ with open("data/sales.csv", newline="") as f:
     print(f"Total revenue: ${total:.2f}")
     
     
-("--- Exercise 4 ---")
+("--- Exercise 5 ---")
 total_rows = 0
 written_rows = 0
 
 with open("data/sales.csv", newline="") as infile, open("data/cleaned.csv", "w", newline="") as outfile:
-    reader = csv.reader(f)
+    reader = csv.reader(infile)
     writer = csv.writer(outfile)
 
     next(reader) # skip the original header
