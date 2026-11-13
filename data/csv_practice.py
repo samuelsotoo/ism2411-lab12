@@ -1,3 +1,7 @@
+# Question 1: Doing this in Excel would have been faster for a one-time job, since I could filter the orders over $100 and make a pivot table by product in a few clicks and see the results right away. But with Python I can rerun the same steps on any similar CSV just by running the script, and it handles much larger files and keeps a record of its runs, like the log file I appended to. Excel is easier to use for exploring data and making charts, but Python is better for repeating a process automatically without redoing the work by hand
+# Question 2: A basketball team’s analytics staff could use an append-mode log to record each player’s minutes and points after every game, with one line per player per game and the date at the start, so they can track workload over the season. Append mode is the right tool because each game adds a new entry to the end of the file without erasing the earlier ones, while write mode would wipe out the whole season’s history every time the script ran. Having that full record in order would let them spot trends, like a player’s minutes climbing over several games, and check their load management decisions later.
+
+
 ("--- Exercise 1-4 ---")
 
 import csv
@@ -87,4 +91,3 @@ timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 with open("data/run_log.txt", "a") as log:
      log.write(f"{timestamp} - Total revenue: ${total:.2f}\n")
-     
