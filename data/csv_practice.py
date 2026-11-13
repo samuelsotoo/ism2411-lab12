@@ -1,6 +1,7 @@
 ("--- Exercise 1-4 ---")
 
 import csv
+from datetime import datetime
 
 with open("data/sales.csv", newline="") as f:
     reader = csv.reader(f)
@@ -80,3 +81,10 @@ with open("data/sales.csv", newline="") as f:
 
 for name in sorted(summary):
      print(f"{name}: ${summary[name]:.2f}")
+
+("--- Exercise 8 ---")
+timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+with open("data/run_log.txt", "a") as log:
+     log.write(f"{timestamp} - Total revenue: ${total:.2f}\n")
+     
