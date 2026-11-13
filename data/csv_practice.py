@@ -44,3 +44,39 @@ with open("data/sales.csv", newline="") as infile, open("data/cleaned.csv", "w",
 
 print(f"Rows written: {written_rows}")
 print(f"Rows in original: {total_rows}")
+
+("--- Exercise 6 ---")
+# csv.reader uses column positions like row[1], which is quick but breaks if the column order changes, so I'd use it for small files with a fixed layout
+# csv.DictReader uses names like row["price"], which is easier to read and safer when columns move, so I'd use it for bigger files or code other people will read.
+
+dict_rows = 0
+dict_over_100 = 0
+dict_revenue = 0
+
+with open("data/sales.csv", newline="") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        dict_rows += 1
+        price = float(row["price"])
+        quantity = int(row["quantity"])
+        order_total = price * quantity
+        dict_revenue += order_total
+        if order_total > 100:
+            dict_over_100 += 1
+
+print(f"Rows read: {dict_rows}")
+print(f"Orders over $100: {dict_over_100}")
+print(f"Total revenue: ${dict_revenue:.2f}")
+
+("--- Exercise 7 ---")
+summary = {}
+
+with open("data/sales.csv", newline="") as f:
+     reader = csv.DictReader(f)
+     for row in reader:
+          name = row["product"]
+          revenue = float(row["price"]) * int(row["quantity"])
+          summary[name] = summary.get(name, 0) + revenue 
+
+for name in sorted(summary):
+     print(f"{name}: ${summary[name]:.2f}")
